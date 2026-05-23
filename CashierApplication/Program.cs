@@ -10,7 +10,6 @@ namespace CashierApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Changed target to display the login screen initially
             Application.Run(new frmLoginAccount());
         }
     }

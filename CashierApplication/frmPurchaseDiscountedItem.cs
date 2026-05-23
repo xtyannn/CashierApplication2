@@ -11,7 +11,6 @@ namespace CashierApplication
         private Cashier activeCashier;
         private Form loginFormInstance;
 
-        // Constructor update to capture active user state context across windows
         public frmPurchaseDiscountedItem(Cashier user, Form backReference)
         {
             InitializeComponent();
@@ -21,7 +20,6 @@ namespace CashierApplication
 
         private void frmPurchaseDiscountedItem_Load(object sender, EventArgs e)
         {
-            // Dynamically apply active state to text headers on startup
             if (activeCashier != null)
             {
                 lblActiveUser.Text = $"Active User: {activeCashier.GetFullName()} ({activeCashier.GetDepartment()})";
@@ -72,24 +70,22 @@ namespace CashierApplication
             }
         }
 
-        // --- MENU STRIP STRATAGEMS ---
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (loginFormInstance != null)
             {
                 loginFormInstance.Show();
-                this.Close(); // Clean up current transaction screen footprint
+                this.Close();
             }
         }
 
         private void exitApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit(); // Shutdown completely
+            Application.Exit();
         }
 
         private void frmPurchaseDiscountedItem_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Standard safety check: If user hits red "X" close window instead of choosing logout, stop background running.
             if (!loginFormInstance.Visible && e.CloseReason == CloseReason.UserClosing)
             {
                 Application.Exit();

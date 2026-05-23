@@ -2,7 +2,6 @@
 
 namespace ItemNamespace
 {
-    // --- ITEM CLASS ---
     public abstract class Item
     {
         protected string item_name;
